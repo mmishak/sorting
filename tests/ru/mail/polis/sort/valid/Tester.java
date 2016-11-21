@@ -1,6 +1,7 @@
 package ru.mail.polis.sort.valid;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
@@ -15,11 +16,12 @@ import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import ru.mail.polis.sort.BubbleSort;
-import ru.mail.polis.sort.Helper;
+import ru.mail.polis.sort.*;
 
 @RunWith(value = Parameterized.class)
 public class Tester {
+
+    private static final Random r = ThreadLocalRandom.current();
 
     @Rule
     public TestRule watcher = new TestWatcher() {
@@ -59,6 +61,48 @@ public class Tester {
     @Test
     public void test01_checkBubbleSort() throws IOException {
         Assert.assertTrue(isSorted(BubbleSort.sort(array)));
+    }
+
+    @Test
+    public void test02_checkInsertSort() throws IOException {
+        Assert.assertTrue(isSorted(InsertSort.sort(array)));
+    }
+
+    @Test
+    public void test03_checkInsertBinarySort() throws IOException {
+        Assert.assertTrue(isSorted(InsertBinarySort.sort(array)));
+    }
+
+    @Test
+    public void test04_checkShellSort() throws IOException {
+        Assert.assertTrue(isSorted(ShellSort.sort(array)));
+    }
+
+    @Test
+    public void test05_checkMergeSort() throws IOException {
+        Assert.assertTrue(isSorted(MergeSort.sort(array)));
+    }
+
+    @Test
+    public void test06_checkMergeSortMemoryFix() throws IOException {
+        Assert.assertTrue(isSorted(MergeSortMemoryFix.sort(array)));
+    }
+
+    @Test
+    public void test07_checkQuickSort() throws IOException {
+        Assert.assertTrue(isSorted(QuickSort.sort(array)));
+    }
+
+    @Test
+    public void test08_checkQuickSortThreePart() throws IOException {
+        Assert.assertTrue(isSorted(QuickSortThreePart.sort(array)));
+    }
+
+    @Test
+    public void test09_checkKStatistic() throws IOException {
+        int[] temp = Arrays.copyOf(array, array.length);
+        Arrays.sort(temp);
+        Assert.assertSame(temp[temp.length/2], KStatistic.kthElement(array, temp.length/2, r));
     }
 
 }
