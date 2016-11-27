@@ -7,7 +7,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import ru.mail.polis.sort.Helper;
-import ru.mail.polis.sort.QuickSortRandom;
+import ru.mail.polis.sort.QuickSortThreePart;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +31,7 @@ public class QuickSortThreePartBench {
 
     @Benchmark
     public void measureQuickSortRandom(Blackhole bh) {
-        bh.consume(QuickSortRandom.sort(a));
+        bh.consume(QuickSortThreePart.sort(a));
     }
 
     public static void main(String[] args) throws RunnerException {

@@ -7,7 +7,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import ru.mail.polis.sort.Helper;
-import ru.mail.polis.sort.MergeSortWM;
+import ru.mail.polis.sort.MergeSortMemoryFix;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +31,7 @@ public class MergeSortMemoryFixBench {
 
     @Benchmark
     public void measureMergeSortWM(Blackhole bh) {
-        bh.consume(MergeSortWM.sort(a));
+        bh.consume(MergeSortMemoryFix.sort(a));
     }
 
     public static void main(String[] args) throws RunnerException {

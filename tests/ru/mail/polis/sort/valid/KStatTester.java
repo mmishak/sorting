@@ -8,7 +8,6 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.mail.polis.sort.BFPRP;
 import ru.mail.polis.sort.Helper;
 import ru.mail.polis.sort.KStatistic;
 import ru.mail.polis.sort.MergeSort;
